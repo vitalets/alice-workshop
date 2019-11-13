@@ -1,0 +1,10 @@
+{
+  "name": "alice-workshop",
+  "version": "1.0.0",
+  "dependencies": {
+    "micro": "^9.3.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
