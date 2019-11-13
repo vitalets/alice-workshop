@@ -1,21 +1,22 @@
-# Шаг 2 - создаем HTTP сервер
+# Шаг 3 - добавляем тесты
 
-Для работы навыка нам нужен HTTP сервер, который будет получать запросы пользователей и возвращать ответ.
-Можно использовать [expressjs](https://expressjs.com), но есть более современная альтернатива - [micro](https://github.com/zeit/micro).
-На этом шаге создаем сервер, который на все запросы отвечает строкой `Running`.
+Сразу начнем работать по взрослому - т.е. по [TDD](https://en.wikipedia.org/wiki/Test-driven_development).
+Напишем автотест, который запускает наш сервер, отправляет на него запрос и проверяет, что в ответ пришло `Running`.
+Тестировать будем с помощью [mocha](https://mochajs.org/), отправлять запрос с помощью [node-fetch](https://github.com/bitinn/node-fetch).
+Также удобно стартовать сервер на случайном свободном порту, а не на `3000`, который может быть занят. Для этого используем [get-port](https://github.com/sindresorhus/get-port).
 
-Изменения кода по всем пунктам видны в [диффе](https://github.com/vitalets/alice-workshop/compare/step1...step2).
-
-1. устанавливаем `micro-dev` (для разработки) и `micro` (для продакшена):
+1. устанавливаем зависимости
    ```bash
-   npm i -D micro-dev
-   npm i micro
+   npm i -D mocha node-fetch get-port
    ```
-2. создаем сервер в файле `src/index.js`
-3. создаем в `package.json` скрипт запуска сервера
-4. проверяем, что сервер запускается
-   ```bash
-   npm run dev
+2. создаем файл с тестом: [дифф с предыдущим шагом](https://github.com/vitalets/alice-workshop/compare/step2...step3)
+3. запускаем тесты:
+   ```
+   $ npm test
+
+   ✓ should return running
+
+   1 passing (30ms)
    ```
 
-[Назад](https://github.com/vitalets/alice-workshop/tree/step1) | [Вперед](https://github.com/vitalets/alice-workshop/tree/step3)
+[Назад](https://github.com/vitalets/alice-workshop/tree/step2) | [Вперед](https://github.com/vitalets/alice-workshop/tree/step4)
