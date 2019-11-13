@@ -1,16 +1,15 @@
-# Шаг 1 - Добавляем package.json и зависимости
+# Шаг 2 - создаем HTTP сервер
 
-1. Создайте в корне файл `package.json`
-2. Добавьте в него название и версию нашего приложения
-3. Добавьте зависимости:
-  * [micro](https://github.com/zeit/micro) - пакет для создания HTTP-сервера
-  * [nodemon](https://github.com/remy/nodemon) - пакет для автоматического перезапуска сервера после редактирования файлов
+Для работы навыка нужен HTTP сервер.
+Когда пользователь общается с навыком через Алису, от Яндекса приходят POST запросы на url сервера.
+На этом шаге создадим HTTP сервер, который будет слушать `3000` порт и на все запросы отвечать строкой `Running`.
 
-Все изменения кода смотрите в [диффе][diff]
-(изменения в `README.md` лучше сразу схлопывать, чтобы не мешали).
+1. Создайте файл `src/index.js` и напишите код сервера (см. [дифф][diff])
+
+Проверку сервера сделаем на следующем шаге, запустив его в докере.
 
 [Назад][prev] | [Готово][next]
 
-[prev]: https://github.com/vitalets/alice-workshop/tree/step0
-[diff]: https://github.com/vitalets/alice-workshop/compare/step0...step1
-[next]: http://bit.ly/alice-workshop_step2
+[prev]: https://github.com/vitalets/alice-workshop/tree/step1
+[diff]: https://github.com/vitalets/alice-workshop/compare/step1...step2
+[next]: http://bit.ly/alice-workshop_step2-1
