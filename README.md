@@ -1,33 +1,16 @@
-# Шаг 0 - Подготовительный
+# Шаг 1 - Добавляем package.json и зависимости
 
-1. Откройте терминал и проверьте, что у вас работает докер:
-   ```bash
-   docker run hello-world
-   ```
-   Должно получиться примерно так:
-   ```
-   $ docker run hello-world
-   Unable to find image 'hello-world:latest' locally
-   latest: Pulling from library/hello-world
-   0e03bdcc26d7: Pull complete 
-   Digest: sha256:6a65f928fb91fcfbc963f7aa6d57c8eeb426ad9a20c7ee045538ef34847f44f1
-   Status: Downloaded newer image for hello-world:latest
-   
-   Hello from Docker!
-   ...
-   ```
+1. Создайте в корне файл `package.json`
+2. Добавьте в него название и версию нашего приложения
+3. Добавьте зависимости:
+  * [micro](https://github.com/zeit/micro) - пакет для создания HTTP-сервера
+  * [nodemon](https://github.com/remy/nodemon) - пакет для автоматического перезапуска сервера после редактирования файлов
 
-2. Теперь склонируйте репозиторий:
-    ```bash
-    git clone https://github.com/vitalets/alice-workshop.git
-    ```
-3. Перейдите в папку `alice-workshop` и сделайте чекаут на тег `step0`:
-   ```bash
-   cd alice-workshop
-   git checkout -b dev step0
-   ```
-4. Откройте папку `alice-workshop` в любимом редакторе и приготовьтесь писать код :)
+Все изменения кода смотрите в [диффе][diff]
+(изменения в `README.md` лучше сразу схлопывать, чтобы не мешали).
 
-[Готово][next]
+[Назад][prev] | [Готово][next]
 
-[next]: http://bit.ly/alice-workshop_step1
+[prev]: https://github.com/vitalets/alice-workshop/tree/step0
+[diff]: https://github.com/vitalets/alice-workshop/compare/step0...step1
+[next]: http://bit.ly/alice-workshop_step2
