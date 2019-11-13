@@ -1,22 +1,14 @@
-# Шаг 3 - добавляем тесты
+# Шаг 4 - используем протокол Алисы и POST запросы
 
-Сразу начнем работать по взрослому - т.е. по [TDD](https://en.wikipedia.org/wiki/Test-driven_development).
-Напишем автотест, который запускает наш сервер, отправляет на него запрос и проверяет, что в ответ пришло `Running`.
-Тестировать будем с помощью [mocha](https://mochajs.org/), отправлять запрос с помощью [node-fetch](https://github.com/bitinn/node-fetch).
-Также удобно стартовать сервер на случайном свободном порту, а не на `3000`, который может быть занят. Для этого используем [get-port](https://github.com/sindresorhus/get-port).
+Теперь научим наш сервер отвечать на POST запросы. 
+С серверов Яндекса в запросах приходит JSON с текстом от пользователя и другими мета-данными.
+В [документации](https://yandex.ru/dev/dialogs/alice/doc/protocol-docpage/) все поля подробно описаны, 
+но мы будем использовать только основные. При входе пользователя в навык будем отвечать `Добро пожаловать`,
+на все остальные команды повторять фразу как попугай: `Вы сказали: {text}`.
+ 
+1. Сначала модифицируем тест, чтобы он отправлял POST запрос с новой сессией согласно протоколу.
+2. Потом изменяем код сервера, чтобы тест проходил.
 
-1. устанавливаем зависимости
-   ```bash
-   npm i -D mocha node-fetch get-port
-   ```
-2. создаем файл с тестом: [дифф с предыдущим шагом](https://github.com/vitalets/alice-workshop/compare/step2...step3)
-3. запускаем тесты:
-   ```
-   $ npm test
+Смотрим [дифф с предыдущим шагом](https://github.com/vitalets/alice-workshop/compare/step3...step4).
 
-   ✓ should return running
-
-   1 passing (30ms)
-   ```
-
-[Назад](https://github.com/vitalets/alice-workshop/tree/step2) | [Вперед](https://github.com/vitalets/alice-workshop/tree/step4)
+[Назад](https://github.com/vitalets/alice-workshop/tree/step3) | [Вперед](https://github.com/vitalets/alice-workshop/tree/step5)

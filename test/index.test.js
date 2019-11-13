@@ -22,9 +22,30 @@ after(async () => {
   await server.close();
 });
 
-it('should return running', async () => {
+it('should respond to new sesison', async () => {
   const url = `http://localhost:${server.address().port}`;
-  const response = await fetch(url);
-  const text = await response.text();
-  assert.strictEqual(text, 'Running');
+  const body = JSON.stringify({
+    request: {
+      command: ''
+    },
+    session: {
+      new: true,
+      session_id: 'test',
+      user_id: 'test',
+    },
+    version: '1.0'
+  });
+  const response = await fetch(url, {method: 'POST', body});
+  const json = await response.json();
+  assert.deepStrictEqual(json, {
+    response: {
+      text: 'Добро пожаловать'
+    },
+    session: {
+      new: true,
+      session_id: 'test',
+      user_id: 'test',
+    },
+    version: '1.0'
+  });
 });
