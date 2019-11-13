@@ -22,30 +22,36 @@ after(async () => {
   await server.close();
 });
 
-it('should respond to new sesison', async () => {
+it('should respond to new session', async () => {
+  const {response} = await say('');
+  assert.strictEqual(response.text, 'Добро пожаловать')
+});
+
+it('should respond to command', async () => {
+  await say('');
+  const {response} = await say('Привет');
+  assert.strictEqual(response.text, 'Вы сказали: Привет');
+});
+
+/**
+ * Вспомогательная функция отправки запроса в навык
+ *
+ * @param {string} command
+ * @returns {Promise}
+ */
+async function say(command) {
   const url = `http://localhost:${server.address().port}`;
   const body = JSON.stringify({
     request: {
-      command: ''
+      command
     },
     session: {
-      new: true,
+      new: !command,
       session_id: 'test',
       user_id: 'test',
     },
     version: '1.0'
   });
   const response = await fetch(url, {method: 'POST', body});
-  const json = await response.json();
-  assert.deepStrictEqual(json, {
-    response: {
-      text: 'Добро пожаловать'
-    },
-    session: {
-      new: true,
-      session_id: 'test',
-      user_id: 'test',
-    },
-    version: '1.0'
-  });
-});
+  return response.json();
+}
