@@ -1,14 +1,20 @@
-# Шаг 6 - добавляем звуки
+# Шаг 7 - добавляем кнопки-подсказки
 
-Также в `tts` можно добавлять звуки: [предустановленные](https://yandex.ru/dev/dialogs/alice/doc/sounds-docpage/) или собственные.
-Пользователям это нравится. Добавим на приветствие звук арфы.
+В ответе навыка можно добавить кнопки-подсказки.
+Они помогают пользователю понять, какие варианты ответа есть в данный момент.
+Нажатие на кнопку отправит ее `title` в навык - как будто пользователь произнес это голосом.
 
-1. Вставьте в поле `tts` разметку для звука, см. [дифф][diff]
-2. Проверьте на смартфоне
-3. Если все получилось, самостоятельно замените арфу на звук джунглей!
+<details>
+ <summary>Выглядят кнопки так</summary>
+ <img width="300" src="https://user-images.githubusercontent.com/1473072/85176031-8af41a00-b281-11ea-9fc8-4ac207460573.png">
+</details>
+
+1. Добавьте в JSON ответа поле `buttons` с 2 кнопками: `Здравствуй` и `Как дела?`, см. [дифф][diff]
+2. Понажимайте эти кнопки в навыке на смартфоне или на вкладке Тестирование
+3. Проверьте, чем отличаются кнопки с параметром `hide: true|false`
 
 [Назад][prev] | [Готово][next]
 
-[prev]: https://github.com/vitalets/alice-workshop/tree/step5
-[diff]: https://github.com/vitalets/alice-workshop/compare/step5...step6
-[next]: http://bit.ly/alice-workshop_step7
+[prev]: https://github.com/vitalets/alice-workshop/tree/step6
+[diff]: https://github.com/vitalets/alice-workshop/compare/step6...step7
+[next]: http://bit.ly/alice-workshop_step8
