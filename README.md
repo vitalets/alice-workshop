@@ -1,21 +1,28 @@
-# Шаг 4.2 - тестируем на устройстве
+# Шаг 5 - разделяем голос и текст
 
-Теперь протестируем наш навык прямо на смартфоне, с голосовыми запросами и ответами!
-Приватный навык доступен в приложениях Яндекса только вам - но нужно быть авторизованным под тем же аккаунтом Яндекса,
-под которым вы заходили в панель разработчика.
+Теперь, когда тестирование налажено, можно глубже поизучать возможности платформы.
+Сейчас голосовой ответ и текст на экране пользователя совпадают. Но иногда их нужно разделить.
+Модифицируем наш навык, чтобы он выводил на экран `Привет`, а голосом произносил `Привет, я ваш голосовой помощник`.
 
-1. убедитесь, что публикация завершилась (под названием навыка должна быть пометка `Диалог опубликован`)
-2. откройте в смартфоне приложение Яндекс / Яндекс.Браузер и запустите Алису
-3. скажите Алисе `Запусти навык %название вашего навыка%`. Должно получиться так:
-   
-   <img width="300" align="center" src="https://user-images.githubusercontent.com/1473072/83940136-074f1d80-a7eb-11ea-911b-ad8a9846c5bb.png"/>
+1. Добавьте в `src/index.js` поле `tts` согласно [диффу][diff]
+2. Проверьте на смартфоне или на вкладке Тестирование
 
-   <img width="300" align="center" src="https://user-images.githubusercontent.com/1473072/83940205-83e1fc00-a7eb-11ea-877e-b0502ceb933f.png"/>
-   <hr/>
+Если изменения не подтягиваются в навык, проверьте в логах сервера, что он перезагружается при изменении файлов:
+```bash
+docker-compose logs -f webhook
+```
+Должно быть так:
+```
+webhook_1  | [nodemon] restarting due to changes...
+webhook_1  | [nodemon] starting `node src/index.js`
+webhook_1  | Server started on http://localhost:3000, tunnel: http://localhost:4040
+webhook_1  | [nodemon] restarting due to changes...
+webhook_1  | [nodemon] starting `node src/index.js`
+webhook_1  | Server started on http://localhost:3000, tunnel: http://localhost:4040
+```
 
-Если Алиса вам ответила `Привет`, значит все получилось!
-  
 [Назад][prev] | [Готово][next]
 
-[prev]: https://github.com/vitalets/alice-workshop/tree/step4.1
-[next]: http://bit.ly/alice-workshop_step5
+[prev]: https://github.com/vitalets/alice-workshop/tree/step4.2
+[diff]: https://github.com/vitalets/alice-workshop/compare/step4.2...step5
+[next]: http://bit.ly/alice-workshop_step6
