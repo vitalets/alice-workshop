@@ -1,4 +1,5 @@
 const micro = require('micro');
+const replies = require('./replies');
 
 const server = micro(async (req, res) => {
   if (req.method !== 'POST') {
@@ -6,20 +7,12 @@ const server = micro(async (req, res) => {
   }
 
   const { request, session } = await micro.json(req);
+  const response = session.new
+    ? replies.welcome()
+    : replies.repeatUserCommand(request.command);
+
   return {
-    response: {
-      text: session.new
-        ? 'Привет'
-        : `Вы сказали: ${request.command}`,
-      tts: session.new
-        ? '<speaker audio="alice-music-harp-1.opus">Привет, я ваш голосовой помощник'
-        : `Вы сказали: ${request.command}`,
-      buttons: [
-        { title: 'Здравствуй', hide: true },
-        { title: 'Как дела?', hide: true },
-      ],
-      end_session: false
-    },
+    response,
     version: '1.0'
   };
 });
