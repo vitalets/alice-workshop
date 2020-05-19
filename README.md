@@ -1,70 +1,13 @@
-# Шаг 2.1 - запускаемся в докере
+# Шаг 3 - превращаем сервер в навык Алисы
 
-Теперь запустим наш HTTP сервер в докер-контейнере.
-Использование докера позволяет всем работать в одинаковом окружении,
-избежать ошибок из-за разных версий Node.js и других особенностей настройки вашей операционной системы.
-
-Запустим сразу 2 контейнера (это все описано в файле `docker-compose.yml`, но в него мы углубляться не будем):
-- `webhook` - собственно HTTP сервер на Node.js
-- `ngrok` - туннелер, который сделает наш локальный сервер доступным в интернете
-
-1. Выполните в терминале команду запуска контейнеров:
-   ```bash
-   docker-compose up -d
-   ```
-   <details>
-       <summary>Пример вывода:</summary>
-       
-       $ docker-compose up -d
-       Creating network "alice-workshop_default" with the default driver
-       Building webhook
-       Step 1/4 : FROM node:12-alpine
-       12-alpine: Pulling from library/node
-       cbdbe7a5bc2a: Pull complete
-       ...
-       Creating alice-workshop_ngrok_1   ... done
-       Creating alice-workshop_webhook_1 ... done
-   </details>
-
-2. Также посмотрите логи нашего сервера:
-   ```bash
-   docker-compose logs webhook
-   ```
-   <details>
-       <summary>Пример корректных логов:</summary>
-
-       $ docker-compose logs webhook
-       Attaching to alice-workshop_webhook_1
-       webhook_1  | [nodemon] 2.0.4
-       webhook_1  | [nodemon] to restart at any time, enter `rs`
-       webhook_1  | [nodemon] watching path(s): src/**/*
-       webhook_1  | [nodemon] watching extensions: js,mjs,json
-       webhook_1  | [nodemon] starting `node src/index.js`
-       webhook_1  | Server started on http://localhost:3000, tunnel: http://localhost:4040
-   </details>
-3. Проверьте, что наш сервер работает: откройте http://localhost:3000 - должна отобразиться строка `Running`
-4. Проверьте, что сервер также доступен из интернета: откройте http://localhost:4040 и перейдите по ссылке вида `https://XXXXXXXX.eu.ngrok.io`
-   <details>
-     <summary>Пример интерфейса ngrok</summary>
-     <img src="https://user-images.githubusercontent.com/1473072/83938603-84c06100-a7de-11ea-825c-912e3766931f.png">
-   </details>
-
-Если что-то пошло не так:
-- <details>
-     <summary>docker: Error response from daemon: Mounts denied:...</summary>
-  
-     [Разрешите докеру доступ к папке проекта.](https://docs.docker.com/docker-for-mac/osxfs/#namespaces)
-  </details>
-- <details>
-     <summary>Couldn't connect to Docker daemon at http+unix://var/run/docker.sock - is it running?</summary>
-  
-     Попробуйте перезапустить докер. Если после этого снова не заработает, попробуйте выполнить команду через sudo:
-     `sudo docker-compose up -d`
-  </details>
-- По остальным вопросам пишите в чат - попробуем помочь!
+Чтобы сервер смог выступать в роли навыка Алисы, он должен возвращать не строку, а JSON согласно [протоколу](https://yandex.ru/dev/dialogs/alice/doc/protocol-docpage/).
+Пока будем использовать минимальный набор полей - пусть наш навык отвечает `Привет` на любые фразы пользователя.
+ 
+1. Замените в ответе сервера строку `Running` на JSON, см [дифф][diff]
+2. Проверьте в браузере: http://localhost:3000 - должен отобразиться JSON с ответом навыка
 
 [Назад][prev] | [Готово][next]
 
-[prev]: https://github.com/vitalets/alice-workshop/tree/step2
-[diff]: https://github.com/vitalets/alice-workshop/compare/step2...step2.1
-[next]: http://bit.ly/alice-workshop_step3
+[prev]: https://github.com/vitalets/alice-workshop/tree/step2.1
+[diff]: https://github.com/vitalets/alice-workshop/compare/step2.1...step3
+[next]: http://bit.ly/alice-workshop_step4
