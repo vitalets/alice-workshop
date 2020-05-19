@@ -1,28 +1,14 @@
-# Шаг 5 - разделяем голос и текст
+# Шаг 6 - добавляем звуки
 
-Теперь, когда тестирование налажено, можно глубже поизучать возможности платформы.
-Сейчас голосовой ответ и текст на экране пользователя совпадают. Но иногда их нужно разделить.
-Модифицируем наш навык, чтобы он выводил на экран `Привет`, а голосом произносил `Привет, я ваш голосовой помощник`.
+Также в `tts` можно добавлять звуки: [предустановленные](https://yandex.ru/dev/dialogs/alice/doc/sounds-docpage/) или собственные.
+Пользователям это нравится. Добавим на приветствие звук арфы.
 
-1. Добавьте в `src/index.js` поле `tts` согласно [диффу][diff]
-2. Проверьте на смартфоне или на вкладке Тестирование
-
-Если изменения не подтягиваются в навык, проверьте в логах сервера, что он перезагружается при изменении файлов:
-```bash
-docker-compose logs -f webhook
-```
-Должно быть так:
-```
-webhook_1  | [nodemon] restarting due to changes...
-webhook_1  | [nodemon] starting `node src/index.js`
-webhook_1  | Server started on http://localhost:3000, tunnel: http://localhost:4040
-webhook_1  | [nodemon] restarting due to changes...
-webhook_1  | [nodemon] starting `node src/index.js`
-webhook_1  | Server started on http://localhost:3000, tunnel: http://localhost:4040
-```
+1. Вставьте в поле `tts` разметку для звука, см. [дифф][diff]
+2. Проверьте на смартфоне
+3. Если все получилось, самостоятельно замените арфу на звук джунглей!
 
 [Назад][prev] | [Вперед][next]
 
-[prev]: https://github.com/vitalets/alice-workshop/tree/step4.2
-[diff]: https://github.com/vitalets/alice-workshop/compare/step4.2...step5
-[next]: https://github.com/vitalets/alice-workshop/tree/step6
+[prev]: https://github.com/vitalets/alice-workshop/tree/step5
+[diff]: https://github.com/vitalets/alice-workshop/compare/step5...step6
+[next]: https://github.com/vitalets/alice-workshop/tree/step7
