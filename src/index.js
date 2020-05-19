@@ -4,7 +4,7 @@ const server = micro(async (req, res) => {
   return {
     response: {
       text: 'Привет',
-      tts: 'Привет, я ваш голосовой помощник',
+      tts: '<speaker audio="alice-music-harp-1.opus">Привет, я ваш голосовой помощник',
       end_session: false
     },
     version: '1.0'
