@@ -1,37 +1,34 @@
 const micro = require('micro');
 const replies = require('./replies');
 
-/**
- * @type {Map<{number1: number, number2: number}>}
- */
-const questions = new Map();
-
 const server = micro(async (req, res) => {
-  const { request, session } = await micro.json(req);
+  const { request, session, state } = await micro.json(req);
+  const sessionState = state && state.session || {};
   const response = session.new
     ? replies.welcome()
-    : checkAnswer(session.session_id, request.command);
+    : checkAnswer(sessionState, request.command);
   return {
     response,
+    session_state: sessionState,
     version: '1.0'
   };
 });
 
-function checkAnswer(sessionId, command) {
-  let question = questions.get(sessionId);
+function checkAnswer(sessionState, command) {
+  let question = sessionState.question;
   if (!question) {
-    question = generateQuestion(sessionId);
+    question = generateQuestion(sessionState);
     return replies.firstQuestion(question);
   }
 
   if (isCorrectAnswer(question, command)) {
-    question = generateQuestion(sessionId);
+    question = generateQuestion(sessionState);
     return replies.correctAnswer(question);
   }
 
   if (/сдаюсь/i.test(command)) {
     const answer = question.number1 + question.number2;
-    question = generateQuestion(sessionId);
+    question = generateQuestion(sessionState);
     return replies.capitulate(answer, question);
   }
 
@@ -44,12 +41,12 @@ function isCorrectAnswer(question, command) {
   return matches && Number(matches[0]) === correctAnswer;
 }
 
-function generateQuestion(sessionId) {
+function generateQuestion(sessionState) {
   const question = {
     number1: Math.ceil(Math.random() * 20),
     number2: Math.ceil(Math.random() * 20),
   };
-  questions.set(sessionId, question);
+  sessionState.question = question;
   return question;
 }
 
