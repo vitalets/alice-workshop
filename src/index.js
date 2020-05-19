@@ -33,6 +33,12 @@ function checkAnswer(command) {
     return replies.correctAnswer(question);
   }
 
+  if (/сдаюсь/i.test(command)) {
+    const answer = question.number1 + question.number2;
+    question = generateQuestion();
+    return replies.capitulate(answer, question);
+  }
+
   return replies.incorrectAnswer(question);
 }
 
