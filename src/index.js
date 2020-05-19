@@ -37,8 +37,9 @@ function checkAnswer(command) {
 }
 
 function isCorrectAnswer(command) {
-  // временно
-  return true;
+  const matches = command.match(/[0-9]+/);
+  const correctAnswer = question.number1 + question.number2;
+  return matches && Number(matches[0]) === correctAnswer;
 }
 
 function generateQuestion() {

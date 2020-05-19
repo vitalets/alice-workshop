@@ -49,7 +49,7 @@ exports.incorrectAnswer = ({ number1, number2 }) => {
 exports.correctAnswer = ({ number1, number2 }) => {
   return {
     text: `Правильно! Следующий вопрос: ${number1} + ${number2} = ?`,
-    tts: `Правильно! Следующий вопрос: ${number1} + ${number2}`,
+    tts: `<speaker audio="alice-sounds-human-crowd-6.opus">Правильно! Следующий вопрос: ${number1} + ${number2}`,
     end_session: false
   };
 };
