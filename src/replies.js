@@ -2,9 +2,10 @@
  * Приветственное сообщение при входе в навык.
  */
 exports.welcome = () => {
+  const greeting = getRandomElement(['Привет', 'Здравствуйте']);
   return {
-    text: 'Привет. Я ваш новый учитель математики. Начинаем урок?',
-    tts: '<speaker audio="alice-music-harp-1.opus">Привет. Я ваш новый учитель математики. Начинаем урок?',
+    text: `${greeting}. Я ваш новый учитель математики. Начинаем урок?`,
+    tts: `<speaker audio="alice-music-harp-1.opus">${greeting}. Я ваш новый учитель математики. Начинаем урок?`,
     buttons: [
       { title: 'Начинаем', hide: true },
     ],
@@ -34,9 +35,10 @@ exports.firstQuestion = ({ number1, number2 }) => {
  * @param {Number} number2
  */
 exports.incorrectAnswer = ({ number1, number2 }) => {
+  const no = getRandomElement(['Неверно', 'Неправильно', 'Нет']);
   return {
-    text: `Неверно. Попробуй еще раз: ${number1} + ${number2} = ?`,
-    tts: `Неверно. Попробуй еще раз: ${number1} + ${number2}`,
+    text: `${no}. Попробуй еще раз: ${number1} + ${number2} = ?`,
+    tts: `${no}. Попробуй еще раз: ${number1} + ${number2}`,
     buttons: [capitulateButton],
     end_session: false
   };
@@ -49,9 +51,10 @@ exports.incorrectAnswer = ({ number1, number2 }) => {
  * @param {Number} number2
  */
 exports.correctAnswer = ({ number1, number2 }) => {
+  const yes = getRandomElement(['Правильно', 'Отлично', 'Да']);
   return {
-    text: `Правильно! Следующий вопрос: ${number1} + ${number2} = ?`,
-    tts: `<speaker audio="alice-sounds-human-crowd-6.opus">Правильно! Следующий вопрос: ${number1} + ${number2}`,
+    text: `${yes}! Следующий вопрос: ${number1} + ${number2} = ?`,
+    tts: `<speaker audio="alice-sounds-human-crowd-6.opus">${yes}! Следующий вопрос: ${number1} + ${number2}`,
     buttons: [capitulateButton],
     end_session: false
   };
@@ -76,3 +79,8 @@ exports.capitulate = (answer, { number1, number2 }) => {
 const capitulateButton = {
   title: 'Сдаюсь', hide: true
 };
+
+function getRandomElement(arr) {
+  const index = Math.floor(Math.random() * arr.length);
+  return arr[index];
+}
