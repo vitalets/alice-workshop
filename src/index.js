@@ -1,7 +1,13 @@
 const micro = require('micro');
 
 const server = micro(async (req, res) => {
-  return 'Running';
+  return {
+    response: {
+      text: 'Привет',
+      end_session: false
+    },
+    version: '1.0'
+  };
 });
 
 const PORT = 3000;
