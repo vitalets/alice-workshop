@@ -5,7 +5,7 @@ const server = micro(async (req, res) => {
   const { request, session } = await micro.json(req);
   const response = session.new
     ? replies.welcome()
-    : replies.repeatUserCommand(request.command);
+    : replies.firstQuestion({ number1: 2, number2: 2 });
   return {
     response,
     version: '1.0'
