@@ -1,15 +1,14 @@
-# Шаг 9 - разделяем логику и текст ответов
+# Шаг 9.1 - перерыв
 
-Сейчас весь код лежит в одном файле `src/index.js`: и логика, и тексты ответов.
-А в следующих шагах у нас добавится еще больше текстов.
-Поэтому проведем рефакторинг: вынесем формирование ответов в отдельный файл `src/replies.js`,
-чтобы не смешивать их в бизнес-логикой.
+Немного отдохнем, чтобы информация лучше уложилась.
+И потом превратим наш навык-заготовку в настоящего Учителя математики!
 
-1. Вынесите функции формирования ответов в отдельный файл `src/replies.js`, см [дифф][diff]
-2. Проверьте, что после рефакторинга навык работает
+Также регистрируйтесь на [онлайн-хакатон по навыкам Алисы](https://yandex.ru/promo/events/generated/online-hack-alisa-27-06-2020),
+который пройдет в следующие выходные. Там можно будет применить в бою все полученные знания и выиграть Яндекс.Станцию!
+
+![image](https://user-images.githubusercontent.com/1473072/83940985-69f6e800-a7f0-11ea-8260-b4e42dd75bbf.png)
 
 [Назад][prev] | [Готово][next]
 
-[prev]: https://github.com/vitalets/alice-workshop/tree/step8
-[diff]: https://github.com/vitalets/alice-workshop/compare/step8...step9
-[next]: http://bit.ly/alice-workshop_step9-1
+[prev]: https://github.com/vitalets/alice-workshop/tree/step9
+[next]: http://bit.ly/alice-workshop_step10
