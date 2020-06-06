@@ -1,14 +1,13 @@
-# Шаг 9 - разделяем логику и текст ответов
+# Шаг 9.1 - перерыв
 
-Сейчас код формирования ответа получился довольно большой, при том что навык пока почти ничего не умеет. 
-На этом шаге вынесем формирование ответов в отдельный файл [src/replies.js](src/replies.js),
-чтобы не смешивать их с бизнес логикой. Это очень поможет нам в будущем.
+Немного отдохнем, чтобы информация лучше уложилась.
+И потом приступим к нашей главной цели - разработке навыка Учитель математики!
+Кто не успел - догоняйте. 
+Кто все успел - можно для вдохновения посмотреть на существующие навыки Алисы [в разных категориях](https://dialogs.yandex.ru/store).
 
-1. Вынесите функции формирования ответов в отдельный файл `src/replies.js`, см [дифф][diff]
-2. Проверьте, что после этого рефакторинга навык работает
+![image](https://user-images.githubusercontent.com/1473072/83940985-69f6e800-a7f0-11ea-8260-b4e42dd75bbf.png)
 
 [Назад][prev] | [Готово][next]
 
-[prev]: https://github.com/vitalets/alice-workshop/tree/step8
-[diff]: https://github.com/vitalets/alice-workshop/compare/step8...step9
-[next]: http://bit.ly/alice-workshop_step9-1
+[prev]: https://github.com/vitalets/alice-workshop/tree/step9
+[next]: http://bit.ly/alice-workshop_step10
